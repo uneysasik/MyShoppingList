@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+
+    <title>Shopping List</title>
+
+    <style>
+
+
+        table{
+            width: 100%;
+            border-collapse: collapse;
+        }
+        td {
+
+            border: 0px solid grey;
+            border-collapse: collapse;
+        }
+
+        th {
+            border: 0px solid grey;
+            border-collapse: collapse;
+            background-color: ;
+        }
+
+
+    </style>
+</head>
+
+
+<body
+
+
+        topmargin="0"
+        leftmargin="0"
+        rightmargin="0"
+        bottommargin="0"
+        marginwidth="0"
+        marginheight="0" bgcolor="#006699" style="background-attachment: fixed"
+
+
+>
+
+
+
+<table border="0" style="border-collapse: collapse" width="1141" cellpadding="0">
+    <tr>
+        <td height="71" width="795" colspan="3" style="border-left-style: none; border-left-width: medium; border-right-style: none; border-right-width: medium; border-top-style: none; border-top-width: medium; border-bottom-style: solid; border-bottom-width: 1px" bgcolor="#00496C" valign="middle">
+            <blockquote>
+                <blockquote>
+                    <blockquote>
+                        <p>&nbsp;</p>
+                        <p><span style="text-transform: uppercase; font-weight:700">
+					<font face="Cooper Lt BT" size="6" color="#FFFFFF"><dfn>My Shopping List</dfn></font></span></p>
+                    </blockquote>
+                </blockquote>
+            </blockquote>
+        </td>
+    </tr>
+    <tr>
+        <td width="169" style="border-left-style: none; border-left-width: medium; border-right-style: none; border-right-width: medium; border-bottom-style: none; border-bottom-width: medium" rowspan="2">&nbsp;</td>
+        <td width="541" style="border-left-style: none; border-left-width: medium; border-right-style: none; border-right-width: medium; border-bottom-style: solid; border-bottom-width: 1px" valign="top">&nbsp;<table width="66%" >
+            <form th:action="@{addItem}" method="POST" style="border: 0px solid #0082BF; background-color:# 27408b" >
+                <tr>
+                    <th>
+                        <input name="itemName" minlength="2" placeholder="product" style="background-color: #C0C0C0"/></th>
+                    <th>
+                        <input name="amount" type="number" min="1" placeholder="amount" style="background-color: #C0C0C0"/></th>
+                    <th>
+                        <input name="price" type="number" min="0" step="0.01" placeholder="unit price" style="background-color: #C0C0C0"/></th>
+                    <th>
+                        <button type="submit" style="color: #00FF00"><b>Add Item</b></button>
+                        </b>
+                    </th>
+                </tr>
+            </form >
+        </table>
+
+
+            <p><br>
+
+            </p>
+
+            <p>&nbsp;</td>
+        <td width="431" style="border-left-style: none; border-left-width: medium; border-right-style: none; border-right-width: medium; border-bottom-style: solid; border-bottom-width: 1px" valign="top">&nbsp;</td>
+    </tr>
+    <tr>
+        <td width="972" style="border-left-style: none; border-left-width: medium; border-right-style: none; border-right-width: medium; border-bottom-style: none; border-bottom-width: medium" valign="top" colspan="2" height="170">
+            <table>
+                <tr>
+                    <th style="background-color: #00496C"><span style="font-weight: 400; text-transform:uppercase">
+		<font face="Book Antiqua" color="#FFFFFF">Items</font></span></th>
+                    <th style="background-color: #00496C"><span style="font-weight: 400; text-transform:uppercase">
+		<font face="Book Antiqua" color="#FFFFFF">Amount</font></span></th>
+                    <th style="background-color: #00496C"><span style="font-weight: 400; text-transform: uppercase">
+		<font face="Book Antiqua" color="#FFFFFF">Unit Price</font></span></th>
+                    <th style="background-color: #00496C"><span style="font-weight: 400; text-transform:uppercase">
+		<font face="Book Antiqua" color="#FFFFFF">Total Price</font></span></th>
+                </tr>
+                <tr th:each="item:${items}">
+                    <td th:text="${item.itemName}" align="left">
+                        <font face="Book Antiqua" color="#FFFFFF">""</font></td>
+                    <td th:text="${item.amount}" align="center"></td>
+                    <td th:text="${item.price}" align="center"><font face="Book Antiqua" color="#FFFFFF">""</font></td>
+                    <td th:text="${item.totalPrice}" align="center">
+                        <font face="Book Antiqua" color="#FFFFFF">""</font></td>
+                    <td style="border-right-style: none; border-right-width: medium; border-top-style: none; border-top-width: medium; border-bottom-style: none; border-bottom-width: medium">
+                        <p align="center" ><a th:href="@{deleteItem/{id}(id=${item.id})}">
+                            <input type="button" value="Delete" style="font-family: Cooper Lt BT; color: #FF0000; font-weight: bold"/></a> </td>
+
+
+                </tr>
+                <tr>
+
+                    <td align="left" bgcolor="#00496C"><b font face="Cooper Md BT" color="#FFFFFF">Total</b> </td>
+                    <td align="center" bgcolor="#00496C" > <b color="#FFFFFF" th:text="${amount}">  </b>  </td>
+                    <td align="center" bgcolor="#00496C"> <b color="#FFFFFF">  </b></td>
+                    <td align="center" bgcolor="#00496C"> <b color="#FFFFFF" th:text="${total}">  </b> </td>
+
+                </tr>
+
+                </tr>
+            </table>
+            <br><br>
+            &nbsp;</td>
+    </tr>
+    <tr>
+        <td width="795" colspan="3" style="border-style: none; border-width: medium">&nbsp;</td>
+    </tr>
+</table>
+
+
+</body>
+</html>
